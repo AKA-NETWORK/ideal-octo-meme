@@ -378,7 +378,7 @@ function parseListItem(item, file) {
     .map((node) => (
       file.value.slice(node.position.start.offset, node.position.end.offset)),
     )
-    .join('').replace(/\s+/g, ' ').replace(/<!--.*?-->/sg, '');
+    .join('').replace(/\s+/g, ' ').replaceAll(/<!--.*?-->/sg, '');
   let text = current.textRaw;
 
   if (!text) {
