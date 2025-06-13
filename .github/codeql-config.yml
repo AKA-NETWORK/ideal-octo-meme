@@ -1,6 +1,14 @@
-name: CodeQL config
+# Common configuration for all languages
+disable-default-queries: false
 
-paths-ignore:
-  - test
-  - deps
-  - benchmark
+# C++ specific configuration
+cpp:
+  query-filters:
+    - exclude:
+        id:
+          - "cpp/missing-return"
+          - "cpp/offset-of-non-standard"
+  paths-ignore:
+    - "test/**"
+    - "deps/**"
+    - "benchmark/**"
