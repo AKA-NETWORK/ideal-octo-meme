@@ -2,13 +2,15 @@
 disable-default-queries: false
 
 # C++ specific configuration
-cpp:
-  query-filters:
-    - exclude:
-        id:
-          - "cpp/missing-return"
-          - "cpp/offset-of-non-standard"
-  paths-ignore:
-    - "test/**"
-    - "deps/**"
-    - "benchmark/**"
+languages: [cpp]
+
+queries:
+  - exclude:
+      id:
+        - "cpp/missing-return"
+        - "cpp/offset-of-non-standard"
+
+paths-ignore:
+  - "test/**"
+  - "deps/**"
+  - "benchmark/**"
