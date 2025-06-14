@@ -1,0 +1,22 @@
+name: Enable Security Features
+on:
+  workflow_dispatch:
+jobs:
+  enable-security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enable Secret Scanning
+        run: |
+          gh api --method PUT \
+            -H "Accept: application/vnd.github+json" \
+            /repos/${{ github.repository }}/secret-scanning/enable \
+            -f status="enabled"
+      - name: Enable Dependabot Alerts
+        run: |
+          gh api --method PUT \
+            -H "Accept: application/vnd.github+json" \
+            /repos/${{ github.repository }}/vulnerability-alerts \
+            -f status="enabled"
+    permissions:
+      security-events: write
+      contents: write
