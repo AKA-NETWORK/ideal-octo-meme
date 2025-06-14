@@ -1,0 +1,20 @@
+name: Sync Repository
+on:
+  schedule:
+    - cron: '0 * * * *'  # Every hour
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Sync with upstream
+        if: github.event_name == 'schedule'
+        run: |
+          git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+          git fetch upstream
+          git merge upstream/main
+          git push origin main
