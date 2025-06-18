@@ -1,0 +1,2 @@
+[ignored_vulnerabilities]
+"GHSA-xxxx-xxxx-xxxx" = "REASON_FOR_IGNORING"
